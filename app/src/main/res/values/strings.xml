@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LearningAgain</string>
+    <string name="button">Button</string>
+    <string name="textview">Hey This is Shubham Dokania!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
