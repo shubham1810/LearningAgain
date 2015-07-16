@@ -2,18 +2,29 @@ package com.shubhamdokania.learningagain;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+
+public class MainActivity extends ActionBarActivity implements View.OnClickListener,
+        AdapterView.OnItemClickListener {
 
     TextView mainTextView;
     Button mainButton;
     EditText mainEditText;
+
+    ListView mainListView;
+    ArrayAdapter mArrayAdapter;
+    ArrayList mNameList = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mainButton.setOnClickListener(this);
 
         mainEditText = (EditText) findViewById(R.id.main_edittext);
+
+        mainListView = (ListView) findViewById(R.id.main_listview);
+
+        mArrayAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1,
+                mNameList);
+
+        mainListView.setAdapter(mArrayAdapter);
+        mainListView.setOnItemClickListener(this);
     }
 
     /* Method defined by me just for testing purpose......Do not delete....maybe useful for learning!
@@ -45,7 +65,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        mainTextView.setText(mainEditText.getText().toString()
-        + " is learning android development.");
+        //mainTextView.setText(mainEditText.getText().toString()
+        //+ " is learning android development.");
+
+        mNameList.add(mainEditText.getText().toString());
+        mArrayAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.d("android logging", position + ": " + mNameList.get(position));
     }
 }
