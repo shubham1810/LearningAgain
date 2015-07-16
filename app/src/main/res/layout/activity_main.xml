@@ -13,12 +13,26 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 
-    <Button
-        android:id="@+id/main_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/button"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/main_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/button"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_launcher"/>
+
+        </LinearLayout>
 
 </LinearLayout>
