@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -12,6 +13,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     TextView mainTextView;
     Button mainButton;
+    EditText mainEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         mainButton = (Button) findViewById(R.id.main_button);
         mainButton.setOnClickListener(this);
+
+        mainEditText = (EditText) findViewById(R.id.main_edittext);
     }
 
     /* Method defined by me just for testing purpose......Do not delete....maybe useful for learning!
@@ -41,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        mainTextView.setText("Button clicked!");
+        mainTextView.setText(mainEditText.getText().toString()
+        + " is learning android development.");
     }
 }

@@ -3,6 +3,7 @@
 
     <string name="app_name">LearningAgain</string>
     <string name="button">Button</string>
+    <string name="hint">This is a hint to type now!</string>
     <string name="textview">Hey This is Shubham Dokania!</string>
     <string name="action_settings">Settings</string>
 
