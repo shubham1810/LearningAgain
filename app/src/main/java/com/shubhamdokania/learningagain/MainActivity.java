@@ -16,6 +16,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 
@@ -34,13 +41,39 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private static final String PREF_NAME = "name";
     SharedPreferences mSharedPreferences;
 
+    public static final String QUERY_URL = "http://openlibrary.org/search.json?q=";
+
+    private void queryBooks(String searchString) {
+        String urlString = "";
+
+        try {
+            urlString = URLEncoder.encode(searchString, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(QUERY_URL + urlString,
+                new JsonHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(JSONObject jsonObject) {}
+
+                    @Override
+                    public void onFaliure(int statusCode, Throwable throwable, JSONObject error) {}
+
+                });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainTextView = (TextView) findViewById(R.id.main_textview);
-        mainTextView.setText("Set in Java");
+        //mainTextView = (TextView) findViewById(R.id.main_textview);
+        //mainTextView.setText("Set in Java");
         //setTextOfAndroidApp(mainTextView);
 
         mainButton = (Button) findViewById(R.id.main_button);
