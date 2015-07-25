@@ -59,10 +59,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 new JsonHttpResponseHandler() {
 
                     @Override
-                    public void onSuccess(JSONObject jsonObject) {}
+                    public void onSuccess(JSONObject jsonObject) {
+                        //Method for success call
+                        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
+
+                        Log.d("Getting something!", jsonObject.toString());
+                    }
 
                     @Override
-                    public void onFaliure(int statusCode, Throwable throwable, JSONObject error) {}
+                    public void onFailure(int statusCode, Throwable throwable, JSONObject error) {
+                        Toast.makeText(getApplicationContext(), "Error: " + statusCode + " " + throwable.getMessage(),
+                                Toast.LENGTH_LONG).show();
+
+                        Log.e("error occurred!", statusCode + " " + throwable.getMessage());
+                    }
 
                 });
     }
