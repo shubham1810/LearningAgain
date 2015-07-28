@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mainListView.setOnItemClickListener(this);
 
         displayWelcome();
+        //queryBooks(mainEditText.getText().toString());
     }
 
     /* Method defined by me just for testing purpose......Do not delete....maybe useful for learning!
@@ -122,8 +123,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         //mainTextView.setText(mainEditText.getText().toString()
         //+ " is learning android development.");
 
-        mNameList.add(mainEditText.getText().toString());
-        mArrayAdapter.notifyDataSetChanged();
+        //mNameList.add(mainEditText.getText().toString());
+        //mArrayAdapter.notifyDataSetChanged();
+
+        queryBooks(mainEditText.getText().toString());
     }
 
     @Override
