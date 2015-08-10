@@ -77,6 +77,20 @@ public class JSONAdapter extends BaseAdapter {
             holder.thumbnailImageView.setImageResource(R.drawable.ic_books);
         }
 
+        String bookTitle = "";
+        String authorName = "";
+
+        if (jsonObject.has("title")) {
+            bookTitle = jsonObject.optString("title");
+        }
+
+        if (jsonObject.has("author_name")) {
+            authorName = jsonObject.optJSONArray("author_name").optString(0);
+        }
+
+        holder.titleTextView.setText(bookTitle);
+        holder.authorTextView.setText(authorName);
+
         return convertView;
     }
 
@@ -84,5 +98,10 @@ public class JSONAdapter extends BaseAdapter {
         public ImageView thumbnailImageView;
         public TextView titleTextView;
         public TextView authorTextView;
+    }
+
+    public void updateData(JSONArray jsonArray) {
+        mJsonArray = jsonArray;
+        notifyDataSetChanged();
     }
 }
